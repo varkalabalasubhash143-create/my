@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReLoop Market - CampusSwap</title>
+
+    <!-- CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f8f5;
+            color: #222;
+        }
+
+        header {
+            background: #176b52;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background: #104b39;
+            padding: 15px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 15px;
+            font-weight: bold;
+        }
+
+        .hero {
+            background: #dcefe5;
+            text-align: center;
+            padding: 55px 20px;
+        }
+
+        .hero h1 {
+            color: #176b52;
+            font-size: 38px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            margin-bottom: 20px;
+        }
+
+        button {
+            background: #176b52;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        button:hover {
+            background: #104b39;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+            padding: 30px 0;
+        }
+
+        h2 {
+            color: #176b52;
+            margin-bottom: 20px;
+        }
+
+        .search {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 20px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 8px #00000012;
+        }
+
+        .card .emoji {
+            font-size: 55px;
+            margin-bottom: 12px;
+        }
+
+        .card h3 {
+            margin: 10px 0;
+        }
+
+        .price {
+            color: #176b52;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 10px;
+        }
+
+        .form-box {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            max-width: 500px;
+            margin: auto;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+
+        .zones {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .zone {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        footer {
+            background: #104b39;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+        }
+
+        @media(max-width:600px) {
+            nav a {
+                display: inline-block;
+                margin: 7px;
+            }
+            .hero h1 {
+                font-size: 29px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <h1>♻ ReLoop Market</h1>
+        <p>CampusSwap - Student Marketplace</p>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#market">Marketplace</a>
+        <a href="#sell">Sell Item</a>
+        <a href="#safety">Safe Zones</a>
+    </nav>
+
+    <!-- HOME -->
+    <section class="hero" id="home">
+        <h1>Give Your Things a Second Life!</h1>
+        <p>
+            Buy, Sell, Exchange and Donate Used College Items.
+            Save Money and Help the Environment.
+        </p>
+        <button onclick="showProducts()">Explore Products</button>
+    </section>
+
+    <!-- MARKETPLACE -->
+    <section class="container" id="market">
+        <h2>Campus Marketplace</h2>
+
+        <input
+            type="text"
+            class="search"
+            id="search"
+            placeholder="Search products..."
+            onkeyup="searchProducts()"
+        >
+
+        <div class="products" id="productList">
+
+            <div class="card" data-name="engineering textbook">
+                <div class="emoji">📚</div>
+                <h3>Engineering Textbook</h3>
+                <p>Condition: Good</p>
+                <p class="price">₹350</p>
+                <button onclick="chat('Engineering Textbook')">
+                    Chat with Seller
+                </button>
+            </div>
+
+            <div class="card" data-name="scientific calculator">
+                <div class="emoji">🧮</div>
+                <h3>Scientific Calculator</h3>
+                <p>Condition: Like New</p>
+                <p class="price">₹650</p>
+                <button onclick="chat('Scientific Calculator')">
+                    Chat with Seller
+                </button>
+            </div>
+
+            <div class="card" data-name="lab coat">
+                <div class="emoji">🥼</div>
+                <h3>Lab Coat</h3>
+                <p>Condition: Good</p>
+                <p class="price">₹150</p>
+                <button onclick="chat('Lab Coat')">
+                    Chat with Seller
+                </button>
+            </div>
+
+            <div class="card" data-name="drawing drafter">
+                <div class="emoji">📐</div>
+                <h3>Drawing Drafter</h3>
+                <p>Condition: Fair</p>
+                <p class="price">₹220</p>
+                <button onclick="chat('Drawing Drafter')">
+                    Chat with Seller
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SELL ITEM -->
+    <section class="container" id="sell">
+        <h2>Sell Your Item</h2>
+
+        <div class="form-box">
+            <form id="sellForm">
+                <input
+                    type="text"
+                    id="itemName"
+                    placeholder="Enter Item Name"
+                    required
+                >
+
+                <select id="category">
+                    <option>Textbooks</option>
+                    <option>Lab Equipment</option>
+                    <option>Electronics</option>
+                    <option>Dorm Essentials</option>
+                    <option>Sports Gear</option>
+                </select>
+
+                <select id="condition">
+                    <option>Like New</option>
+                    <option>Good</option>
+                    <option>Fair</option>
+                </select>
+
+                <input
+                    type="number"
+                    id="price"
+                    placeholder="Enter Price"
+                    min="0"
+                    required
+                >
+
+                <button type="submit">Add Product</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- SAFE EXCHANGE ZONES -->
+    <section class="container" id="safety">
+        <h2>Safe Campus Exchange Zones</h2>
+
+        <div class="zones">
+            <div class="zone">
+                <h3>📚 Library Foyer</h3>
+                <p>Public and visible meeting location.</p>
+            </div>
+
+            <div class="zone">
+                <h3>🏫 Student Center</h3>
+                <p>Busy campus meeting location.</p>
+            </div>
+
+            <div class="zone">
+                <h3>☕ Canteen</h3>
+                <p>Safe daytime exchange location.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>ReLoop Market | CampusSwap Hackathon Project</p>
+        <p>Reuse • Recycle • Save Money</p>
+    </footer>
+
+    <!-- JAVASCRIPT -->
+    <script>
+
+        // Search Products
+        function searchProducts() {
+            let input = document
+                .getElementById("search")
+                .value.toLowerCase();
+
+            let cards = document.querySelectorAll(".card");
+
+            cards.forEach(function(card) {
+                let name = card.dataset.name;
+
+                if (name.includes(input)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+
+        // Explore Products
+        function showProducts() {
+            document.getElementById("market").scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+
+        // Chat Simulation
+        function chat(item) {
+            let message = prompt(
+                "Send an inquiry to the seller about " + item
+            );
+
+            if (message) {
+                alert("Message sent successfully!\n" + message);
+            }
+        }
+
+        // Add New Product
+        document.getElementById("sellForm")
+            .addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            let name = document.getElementById("itemName").value;
+            let category = document.getElementById("category").value;
+            let condition = document.getElementById("condition").value;
+            let price = document.getElementById("price").value;
+
+            let card = document.createElement("div");
+
+            card.className = "card";
+            card.dataset.name = name.toLowerCase();
+
+            card.innerHTML = `
+                <div class="emoji">🛍️</div>
+                <h3>${escapeHTML(name)}</h3>
+                <p>${escapeHTML(category)}</p>
+                <p>Condition: ${escapeHTML(condition)}</p>
+                <p class="price">₹${Number(price).toLocaleString("en-IN")}</p>
+                <button onclick="chat('${escapeJS(name)}')">
+                    Chat with Seller
+                </button>
+            `;
+
+            document.getElementById("productList")
+                .appendChild(card);
+
+            alert("Product added successfully!");
+
+            document.getElementById("sellForm").reset();
+        });
+
+        // Safe display of user-entered text
+        function escapeHTML(value) {
+            return String(value).replace(/[&<>"']/g, function(c) {
+                return {
+                    "&": "&amp;",
+                    "<": "&lt;",
+                    ">": "&gt;",
+                    '"': "&quot;",
+                    "'": "&#39;"
+                }[c];
+            });
+        }
+
+        function escapeJS(value) {
+            return String(value)
+                .replace(/\\/g, "\\\\")
+                .replace(/'/g, "\\'")
+                .replace(/</g, "\\x3c");
+        }
+
+    </script>
+
+</body>
+</html>
